@@ -19,7 +19,7 @@
 	/**
 	 * 初始化路由器 
 	 */
-	this.listen = function(){
+	H5.listen = function(){
 		window.onload = function(){
 			// 在很多浏览器上有一个bug
 			// onload  之后会出发popstate，因此在load之后再绑定popstate	
@@ -35,7 +35,7 @@
 	/**
 	 *  设置路由器计算完结果后的回调
 	 */
-	this.onRoute = function(__callBack){
+	H5.onRoute = function(__callBack){
 		callBack = __callBack;
 	};
 
@@ -61,7 +61,7 @@
 	 * 根据url得到一个routeData对象
 	 * @params url string 一个本站的url
 	 */
-	this.getRouteData = function(url, method){
+	H5.getRouteData = function(url, method){
 		//  获取一个本站的完整url对象
 		var urlPrts = __get_local_site_url_parts(url);
 
@@ -124,7 +124,7 @@
 	 * @params action 需要切换的页面
 	 * @params query 需要切换的query对象， 键值对
 	 */
-	this.switchPage = function(action, query, no_state){
+	H5.switchPage = function(action, query, no_state){
 		if(action === '' || action === 'index' || action === undefined) action = '/';
 		if(action != '/' && !/^m-/.test(action)){
 			action = '/m-' + action;
@@ -159,7 +159,7 @@
 	/**
 	 * 路由回退
 	 */
-	this.back = function(){
+	H5.back = function(){
 		window.history.go(-1);
 	};
 })(window);

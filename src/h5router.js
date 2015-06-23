@@ -31,6 +31,24 @@
 			notifyChange("onload");
 		};
 	};
+	
+	/*
+	 * 此正则表达式见RFC Uniform Resource Identifier (3986) 附录B
+	 * 一个URI(统一资源标识符)是一个抽象表示物理资源的字符串
+	 * 详细有关uri的介绍见 http://ietf.org/rfc/rfc3986.txt
+	 */
+	H5.parse_url = function(url){
+		var pattern = RegExp("^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?");
+		var matches =  url.match(pattern);
+		return {
+			scheme: matches[2],
+			authority: matches[4],
+			path: matches[5],
+			query: matches[7],
+			fragment: matches[9]
+		};
+	};
+
 
 	/**
 	 *  设置路由器计算完结果后的回调
